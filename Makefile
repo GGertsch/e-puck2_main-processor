@@ -29,7 +29,7 @@ endif
 
 # C++ specific options here (added to USE_OPT).
 ifeq ($(USE_CPPOPT),)
-  USE_CPPOPT = -fno-rtti
+  USE_CPPOPT = -std=c++17 -fno-rtti -fno-exceptions -fno-use-cxa-atexit
 endif
 
 # Enable this if you want the linker to remove unused code and data
@@ -148,7 +148,7 @@ CSRC += $(STARTUPSRC) \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CPPSRC =
+CPPSRC +=
 
 # C sources to be compiled in ARM mode regardless of the global setting.
 # NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler
@@ -197,8 +197,8 @@ CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
-LD   = $(TRGT)gcc
-#LD   = $(TRGT)g++
+#LD   = $(TRGT)gcc
+LD   = $(TRGT)g++
 CP   = $(TRGT)objcopy -j startup -j constructors -j destructors -j .text -j .ARM.extab -j .ARM.exidx -j .eh_frame_hdr -j .eh_frame -j .textalign -j .data
 AS   = $(TRGT)gcc -x assembler-with-cpp
 AR   = $(TRGT)ar
@@ -243,10 +243,10 @@ UADEFS =
 UINCDIR =
 
 # List the user directory to look for the libraries here
-ULIBDIR =
+ULIBDIR +=
 
 # List all user libraries here
-ULIBS = $(GLOBAL_PATH)/libPDMFilter_CM4F_GCC.a $(GLOBAL_PATH)/libarm_cortexM4lf_math.a
+ULIBS += $(GLOBAL_PATH)/libPDMFilter_CM4F_GCC.a $(GLOBAL_PATH)/libarm_cortexM4lf_math.a
 
 #
 # End of user defines
