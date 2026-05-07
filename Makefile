@@ -13,7 +13,7 @@ endif
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT += -O2 -ggdb -fomit-frame-pointer -falign-functions=16
 
   # Aseba doesn't build with strict aliasing
   USE_OPT += -fno-strict-aliasing
@@ -228,7 +228,7 @@ CPPWARN = -Wall -Wextra -Wundef -Wno-implicit-fallthrough
 #
 
 # List all user C define here, like -D_DEBUG=1
-UDEFS =
+#UDEFS =
 
 UDEFS += -DSTDOUT_SD=SDU1 -DSTDIN_SD=SDU1 -DARM_MATH_CM4 -D__FPU_PRESENT
 
