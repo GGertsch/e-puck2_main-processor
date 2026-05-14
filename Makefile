@@ -129,12 +129,6 @@ else
 	LDSCRIPT= $(GLOBAL_PATH)/stm32f407xG_no_bootloader.ld
 endif
 
-THDULIB = $(GLOBAL_PATH)/threads_utilities_ChibiOS
-USE_THREADS_TIMESTAMPS = true
-THREADS_TIMESTAMPS_LOG_SIZE = 5000
-THREADS_TIMESTAMPS_DEFAULT_LOG  =  false
-include $(THDULIB)/threads_utilities.mk
-
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
